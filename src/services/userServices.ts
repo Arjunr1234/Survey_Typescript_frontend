@@ -7,7 +7,7 @@ import { FormData } from "../interface/user";
 export const signupService = async (name:string, email:string, phone:string, password:string) => {
     try {
         
-        const response = await axiosInstance.post('/api/auth/signup', {name, email, phone, password});
+        const response = await axiosInstance.post('/api/signup', {name, email, phone, password});
         return response.data
       
     } catch (error) {
@@ -18,7 +18,7 @@ export const signupService = async (name:string, email:string, phone:string, pas
 
 export const signInService = async (email:string, password:string) => {
     try {
-         const response = await axiosInstance.post('/api/auth/signin', {email, password});
+         const response = await axiosInstance.post('/api/signin', {email, password});
          return response.data;
        
     } catch (error) {
@@ -29,7 +29,7 @@ export const signInService = async (email:string, password:string) => {
 
 export const userLogoutService = async() => {
     try {
-       const response = await axiosInstance.get('/api/auth/logout');
+       const response = await axiosInstance.get('/api/logout');
        response.data
       
     } catch (error) {
@@ -40,7 +40,7 @@ export const userLogoutService = async() => {
 
  export const fetchFormDataService = async() => {
     try {
-         const response = await axiosInstance.get('/api/auth/submissions');
+         const response = await axiosInstance.get('/api/submissions');
          return response.data
          
     } catch (error) {
@@ -52,7 +52,7 @@ export const userLogoutService = async() => {
 export const formService = async(data:FormData) => {
     try {
         
-         const response = await axiosInstance.post('/api/auth/submit', data);
+         const response = await axiosInstance.post('/api/submit', data);
          return response.data;
 
     } catch (error) {
@@ -63,7 +63,7 @@ export const formService = async(data:FormData) => {
 
 export const googleAuthService = async (email:string, name:string) => {
      try {
-          const response = await axiosInstance.put('/api/auth/google-signin', {email, name});
+          const response = await axiosInstance.put('/api/google-signin', {email, name});
           return response.data
         
      } catch (error) {
@@ -74,7 +74,7 @@ export const googleAuthService = async (email:string, name:string) => {
 
 export const verifyEmailService = async(email:string) => {
       try {
-           const response =  await axiosInstance.get(`/api/auth/verify-user/${email}`);
+           const response =  await axiosInstance.get(`/api/verify-user/${email}`);
            return response.data
           
       } catch (error) {
@@ -87,7 +87,7 @@ export const resetPasswordService = async(email:string, password:string) => {
       try {
           console.log(email, password);
           
-          const response =  await axiosInstance.put(`/api/auth/reset-password`, {email, password});
+          const response =  await axiosInstance.put(`/api/reset-password`, {email, password});
            return response.data
           
       } catch (error) {
